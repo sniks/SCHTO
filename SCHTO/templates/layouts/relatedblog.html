@@ -1,0 +1,36 @@
+{% load static %}
+{% with random_blogs=blogs %}
+<!-- Related Articles -->
+<div class="related-articles">
+
+    <h3 class="animate-onscroll">You may be interested</h3>
+
+    <div class="row">
+        {% if random_blogs %}
+        {% for row in random_blogs %}
+        {% if row.published == 1 %}
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <!-- Blog Post -->
+            <div class="blog-post animate-onscroll">
+                <div class="post-image">
+                    {% with image_url='/assets/images/blog/'|add:row.image %}
+                    <img src="{% static image_url %}" alt="{{ row.title }}" style="width: 300px;">
+                {% endwith %}
+                </div>
+                <h4 class="post-title"><a href="{% url 'blog_detail' id=row.id %}">{{ row.title }}</a></h4>
+                <div class="post-meta">
+                    <span>{{ row.created_at|date:"M d, Y" }} {% now "h:i A" %}</span>
+                </div>
+            </div>
+            <!-- /Blog Post -->
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <p>No Shuffled Blogs</p>
+        {% endif %}
+    </div>
+
+</div>
+<!-- /Related Articles -->
+{% endwith %}

@@ -1,0 +1,110 @@
+{% extends 'admin/layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="row">
+            <div class="col-md-8">
+                <h4><strong>Blog List</strong></h4>
+            </div>
+            <div class="col-md-4">
+                <a href="" class="btn btn-success btn-sm pull-right">Add New Blog</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class='alert alert-success' role='alert'>
+                <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>
+                {{ message }}
+                <span class='sr-only'>Success:</span>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class='alert alert-danger' role='alert'>
+                <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>
+                {{ message }}
+                <span class='sr-only'>Error:</span>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Post ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for blog in blogs %}
+                        <tr>
+                            <td>{{ blog.id }}</td>
+                            <td>{{ blog.title }}</td>
+                            <td>{{ blog.description | truncatechars:500 }}</td>
+                            <td>{{ blog.created_at }}</td>
+                            <td>
+                                <a href="{% url 'blogs_edit' blog.id %}">
+                                    <button type="button" class="btn btn-box-tool text-green" title="Edit">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                </a>
+
+                                <form method="POST" onclick="return confirm('Are you sure to delete this item?')"
+                                    action="{% url 'blogs_delete' blog.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-box-tool text-red" title="Delete">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+
+                                <a href="{% url 'blogs_status' blog.id %}">
+                                    {% if blog.published %}
+                                    <button type="button" class="btn btn-box-tool text-blue" title="Click to Unpublish">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                    {% else %}
+                                    <button type="button" class="btn btn-box-tool text-black" title="Click to Publish">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    {% endif %}
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {{ blogs.paginator.num_pages }}
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+
+<!-- /.content-wrapper -->
+
+{% endblock %}
