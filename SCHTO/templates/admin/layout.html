@@ -1,0 +1,158 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Second Childhood Trust-Admin Page</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% include 'admin/partials/top-include-resources.html' %}
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="{% url 'home' %}" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>SCT</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Second Childhood Trust</b></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs">
+                                    {% if user.is_authenticated %}
+                                        {{ user.username }}
+                                    {% endif %}
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <p>
+                                        {% if user.is_authenticated %}
+                                            {{ user.username }} - {{ user.role }}
+                                            <small>Member since {{ user.date_joined|date:"Y-m-d" }}</small>
+                                        {% endif %}
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                    </div>
+                                    <div class="pull-right">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel" style="height: 60px;">
+                    <div class="pull-left info" style="display: inline-flex;">
+                        <p>
+                            {% if user.is_authenticated %}
+                                {{ user.username }}
+                            {% endif %}
+                        </p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <!--
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                -->
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">Menu</li>
+                    <li class="treeview {% if '/admin/blogs' in request.path or '/admin/blogs/create' in request.path or '/admin/blogs/edit/' in request.path %}active{% endif %}">
+                        <a href="{% url 'blogs' %}">
+                          <i class="fa fa-newspaper-o"></i><span>Blogs</span>
+                          <span class="pull-right-container"></span>
+                        </a>
+                      </li>
+                      
+                      <li class="treeview {% if '/admin/boards' in request.path or '/admin/boards/create' in request.path or '/admin/boards/edit/' in request.path %}active{% endif %}">
+                        <a href="{% url 'boards' %}">
+                          <i class="fa fa-users"></i><span>Boards</span>
+                          <span class="pull-right-container"></span>
+                        </a>
+                      </li>
+                      
+                      <li class="treeview {% if '/admin/sponsors' in request.path or '/admin/sponsors/create' in request.path or '/admin/sponsors/edit/' in request.path %}active{% endif %}">
+                        <a href="{% url 'sponsors' %}">
+                          <i class="fa fa-users"></i><span>Sponsors</span>
+                          <span class="pull-right-container"></span>
+                        </a>
+                      </li>
+                                            
+                      <li class="treeview {% if '/admin/testimonials' in request.path or '/admin/testimonials/create' in request.path or '/admin/testimonials/edit/' in request.path %}active{% endif %}">
+                        <a href="{% url 'testimonials' %}">
+                          <i class="fa fa-users"></i><span>Testimonials</span>
+                          <span class="pull-right-container"></span>
+                        </a>
+                      </li>
+                    <!-- Add your menu items here -->
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+            <!-- Your content goes here -->
+            {% block content %}{% endblock %}
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Powered By:</b> <a href="www.tdeveloper.in" target="_blank">TDevelopers</a>
+            </div>
+            <strong>
+                Copyright &copy; {{ now|date:"Y" }} <a href="{% url 'home' %}">Second Childhood Trust</a>.
+            </strong>
+            All rights reserved.
+        </footer>
+
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- Include bottom resources -->
+    {% include 'admin/partials/bottom-include-resources.html' %}
+</body>
+</html>

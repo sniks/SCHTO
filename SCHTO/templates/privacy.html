@@ -1,0 +1,74 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+{% block content %}
+  <!-- Page Breadcumb Start -->
+  <section class="pageBreadcumb pageBreadcumb--style1 position-relative" data-bg-image="{% static 'image/bg/pageBreadcumbBg1.jpg' %}">
+    <div class="pageBreadcumbTopDown">
+      <a class="btn btn--styleOne btn--icon btn--icon2 it-btn" href="javascript:void(0)" id="openPopupBtn" >
+        <svg class="btn__icon" width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.869141 8.70508L1.45508 8.11914C1.60156 8.00195 1.80664 8.00195 1.95312 8.14844L4.23828 10.4922V0.414062C4.23828 0.208984 4.38477 0.0625 4.58984 0.0625H5.41016C5.58594 0.0625 5.76172 0.208984 5.76172 0.414062V10.4922L8.01758 8.14844C8.16406 8.00195 8.36914 8.00195 8.51562 8.11914L9.10156 8.70508C9.21875 8.85156 9.21875 9.05664 9.10156 9.20312L5.23438 13.0703C5.08789 13.1875 4.88281 13.1875 4.73633 13.0703L0.869141 9.20312C0.751953 9.05664 0.751953 8.85156 0.869141 8.70508Z" fill="#60646B" />
+        </svg>
+        <span class="it-btn__inner">
+          <span class="it-btn__blobs">
+            <span class="it-btn__blob"></span>
+            <span class="it-btn__blob"></span>
+            <span class="it-btn__blob"></span>
+            <span class="it-btn__blob"></span>
+          </span>
+        </span>
+        <svg class="it-btn__animation" xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter>
+              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo">
+              </feColorMatrix>
+              <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+            </filter>
+          </defs>
+        </svg>
+      </a>
+    </div>
+    <div class="sectionShape sectionShape--top">
+      <img src="{% static 'image/shapes/pagebreadcumbShapeTop.svg' %}" alt="Second Childhood Trust">
+    </div>
+    <div class="sectionShape sectionShape--bottom">
+      <img src="{% static 'image/shapes/pagebreadcumbShapeBottom.svg' %}" alt="Second Childhood Trust">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="pageTitle text-center">
+            <h2 class="pageTitle__heading text-white text-uppercase mb-25">Privacy Policy</h2>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Privacy Policy</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Page Breadcumb End -->
+
+  <!-- Contact -->
+  <div class="contact contact--layout1">
+    <div class="container">
+        <h1>Privacy Policy</h1>
+
+    <p>Your privacy is important to us. This Privacy Policy outlines how Second Childhood Trust collects, uses, and protects your personal information when you interact with us.</p>
+
+    <h2>Information We Collect</h2>
+    <p>We collect personal information, including but not limited to names, contact information, and donation details, when you choose to support Second Childhood Trust.</p>
+
+    <!-- Add more details about information collected, purpose, and security measures -->
+
+    <h2>How We Use Your Information</h2>
+    <p>We use the collected information to process donations, provide receipts, and communicate with our donors. Your personal information is kept confidential and is not shared with third parties without your consent.</p>
+
+    </div>
+</div>
+<!-- Contact End -->
+
+{% endblock %}

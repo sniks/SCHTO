@@ -1,0 +1,181 @@
+{% load static %}
+<!-- Preloader -->
+<div id="preloader">
+    <div class="ctn-preloader" id="ctn-preloader">
+        <div class="round_spinner">
+            <div class="spinner"></div>
+            <div class="text">
+                <img src="{% static 'image/logos/logo.png' %}" alt="Second ChildHood Trust">
+            </div>
+        </div>
+        <h2 class="head">DO GOOD FOR OTHERS</h2>
+        <p></p>
+    </div>
+</div>
+<!-- Preloader End -->
+<!-- Main -->
+<main class="main">
+    <!-- Header Style One -->
+    <!-- header -->
+    <header class="header header--styleTwo sticky-on">
+        <div id="sticky-placeholder"></div>
+        <div class="container container--custom">
+            <div class="row fixed-top-bar">
+                <!-- Contact Number -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact-info">
+                        <span class="contact-info__icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </span>
+                        <span class="contact-info__text">Contact Us: +917506960111</span>
+                    </div>
+                </div>
+                <!-- Social Handles -->
+                <div class="col-lg-6 col-md-6 text-right">
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <!-- Add more social handles as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__wrapper">
+                        <!-- logo start -->
+                        <div class="header__logo">
+                            <a href="/" class="header__logo__link">
+                                <img src="{% static 'image/logos/logo.png' %}" alt="Second ChildHood Trust"
+                                    class="header__logo__image">
+                            </a>
+                        </div>
+                        <!-- logo end -->
+                        <!-- Main Menu Start -->
+                        <div class="header__menu">
+                            <nav class="mainMenu">
+                                <ul>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a href="{% url 'about' %}">About</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"><a href="{% url 'blog' %}">Blogs</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'privacy' %}active{% endif %}"><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'tc' %}active{% endif %}"><a href="{% url 'tc' %}">Terms and Conditions</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'rc' %}active{% endif %}"><a href="{% url 'rc' %}">Refund and Cancellations</a></li>
+                                </ul>
+                                
+                            </nav>
+                        </div>
+                        <!-- Main Menu End -->
+                        <div class="header__right">
+                            <div class="header__button">
+                                <a class="btn btn--styleOne btn--secondary it-btn" href="javascript:void(0)"
+                                    id="openPopupBtn">
+                                    <span class="btn__text">donate now</span>
+                                    <i class="fas fa-heart btn__icon"></i>
+                                    <span class="it-btn__inner">
+                                        <span class="it-btn__blobs">
+                                            <span class="it-btn__blob"></span>
+                                            <span class="it-btn__blob"></span>
+                                            <span class="it-btn__blob"></span>
+                                            <span class="it-btn__blob"></span>
+                                        </span>
+                                    </span>
+                                    <svg class="it-btn__animation" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        <defs>
+                                            <filter>
+                                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10">
+                                                </feGaussianBlur>
+                                                <feColorMatrix in="blur" mode="matrix"
+                                                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo">
+                                                </feColorMatrix>
+                                                <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+    <!-- Mobile Menu Button Start -->
+    <div class="header header--mobile cc-header-menu mean-container position-relative" id="meanmenu">
+        <div class="mean-bar headerBurgerMenu">
+            <a href="{% url 'home' %}">
+                <img class="mean-bar__logo" alt="Techkit" src="{% static 'image/logos/logo.png' %}" />
+            </a>
+            <div class="header__right">
+                <div class="header__actions">
+                    <ul>
+                        <li>
+                            <button class="headerBurgerMenu__button sidebarBtn"
+                                onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))"
+                                aria-label="Main Menu">
+                                <svg width="50" height="50" viewBox="0 0 100 100">
+                                    <path class="line line1"
+                                        d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                                    <path class="line line2" d="M 20,50 H 80" />
+                                    <path class="line line3"
+                                        d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu Button End -->
+    <!-- Mobile Menu Navbar -->
+    <div class="cc cc--slideNav">
+        <div class="cc__logo mb-40">
+            <a href="{% url 'home' %}">
+                <img class="mean-bar__logo" alt="Techkit" src="{% static 'image/logos/logo.png' %}" />
+            </a>
+        </div>
+        <div class="offscreen-navigation mb-40">
+            <nav class="menu-main-primary-container">
+                <ul class="menu">
+                    <li class="list menu-item-parent menu-item-has-children">
+                        <a class="animation" href="{% url 'home' %}">Home</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="popup" class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Donation Details</h5>
+            </div>
+            <div class="modal-body">
+              <img src="https://secondchildhoodtrust.org/public//image/logos/logo.png" alt="Logo" class="logo">
+              <div class="form-group">
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" class="form-control" placeholder="Enter name" required="">
+              </div>
+              <div class="form-group">
+                <label for="amountInput">Amount:</label>
+                <input type="number" id="amountInput" class="form-control" placeholder="Enter amount">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="payButton" class="btn btn-success">Pay Now</button>
+              <button type="button" id="cancel" class="btn btn-secondary cancel" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>

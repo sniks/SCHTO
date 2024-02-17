@@ -1,0 +1,96 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="row">
+            <div class="col-md-8">
+                <h4><strong>Add New Testimonial</strong></h4>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'testimonials' %}" class="btn btn-success btn-sm pull-right">See All Testimonials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+                <form method="post" enctype="multipart/form-data" action="{% if row %}{% url 'testimonials_create_with_id' id=row.id %}{% else %}{% url 'testimonials_create' %}{% endif %}">
+
+                    {% csrf_token %}
+                    <div class="box-body">
+                        <!-- show errors/messages here  -->
+                        {% if messages %}
+                            <div class='alert alert-info' role='alert'>
+                                <span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>
+                                {{ messages }}
+                                <span class='sr-only'>Error:</span>
+                            </div>
+                        {% endif %}
+                        {% if row.errors %}
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    {% for error in row.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <hr>
+                        <!-- /errors -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="title">Fullname of Person</label>
+                                    <input type="text" name="fullname" id="fullname" value="{{ row.fullname }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Designation</label>
+                                    <input type="text" name="designation" id="designation" value="{{ row.designation }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="text">Organization Where he/she works (optional)</label>
+                                    <input type="text" name="organization" id="organization" value="{{ row.organization }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Upload Image</label>
+                                    <input type="file" name="image" id="exampleInputFile">
+                                    <p class="help-block">Image should be in square (160X160)</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="text">Description</label>
+                                    <textarea name="description" class="form-control textarea" placeholder="It was my great pleasure to get an opportunity to write about Prabhav. I certainly believe that Prabhav is great supporting platform for upgrowing talent. I strongly recommend my connections to coordinate with Prabhav." style="width: 100%; height: 110px; line-height: 18px; border: 1px solid #dddddd; padding: 10px">{{ row.description }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+
+
+{% endblock %}

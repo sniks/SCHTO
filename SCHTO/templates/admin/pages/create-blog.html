@@ -1,0 +1,95 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="row">
+        <div class="col-md-8">
+            <h4><strong>{% if row %}Edit{% else %}Add New{% endif %} Blog</strong></h4>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'blogs' %}" class="btn btn-success btn-sm pull-right">See All Blogs</a>
+        </div>
+    </div>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <!-- /.box-header -->
+        <div class="box-body">
+            <form method="post" enctype="multipart/form-data" action="{% if row %}{% url 'blogs_create_with_id' id=row.id %}{% else %}{% url 'blogs_create' %}{% endif %}">                {% csrf_token %}
+                <!-- show errors/messages here  -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-info" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Oops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            {% for error in form.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <!-- /errors -->
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="title">Title of Blog</label>
+                            <input type="text" name="title" id="title" value="{% if row %}{{ row.title }}{% else %}{{ form.title.value }}{% endif %}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text">Description</label>
+                            <textarea name="description" id="description">{% if row %}{{ row.description }}{% else %}{{ form.description.value }}{% endif %}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text">Highlight Text (optional)</label>
+                            <input type="text" name="highlight" id="highlight" value="{% if row %}{{ row.highlight }}{% else %}{{ form.highlight.value }}{% endif %}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputFile">Upload Image</label>
+                            <input type="file" name="image" id="image">
+                            <p class="help-block">Less than 2 MB</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="title">Tags</label>
+                            <input type="text" name="tags" id="tags" value="{% if row %}{{ row.tags }}{% else %}{{ form.tags.value }}{% endif %}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->
+<!-- /.content-wrapper -->
+
+{% endblock %}

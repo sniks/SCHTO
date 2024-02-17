@@ -1,0 +1,227 @@
+{% load static %}
+{% csrf_token %}
+<footer class="footer footer--bg footer--styleOne pt-70 pb-40">
+    <img src="{% static 'image/shapes/footerShape2.png' %}" alt="Second ChildHood Trust Shape" class="footer__shape">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="footer__logo">
+                    <img src="{% static 'image/logos/logo.png' %}" alt="Second ChildHood Trust Logo" class="footer__logo__image">
+                </div>
+            </div>
+            <div class="col">
+                <div class="footer__social itSocial">
+                    <ul>
+                        <li>
+                            <a class="facebook" href="https://codercredit.com/" rel="nofollow">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="twitter" href="https://codercredit.com/" rel="nofollow">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="instagram" href="https://codercredit.com/" rel="nofollow">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="linkedin" href="https://codercredit.com/" rel="nofollow">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="pinterest" href="https://codercredit.com/" rel="nofollow">
+                                <i class="fab fa-pinterest-p"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <hr class="footer__line" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="footer__middle pt-65 pb-35">
+                <div class="row justify-content-between">
+                    <div class="col-lg-2 col-md-4 mb-30">
+                        <div class="footer__widget">
+                            <div class="footer__title">
+                                <h2 class="footer__heading text-uppercase text-white">About us</h2>
+                            </div>
+                            <div class="footer__menu">
+                                <ul>
+                                    <li><a href="">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-30">
+                        <div class="footer__widget">
+                            <div class="footer__title">
+                                <h2 class="footer__heading text-uppercase text-white">Support us</h2>
+                            </div>
+                            <div class="footer__menu">
+                                <ul>
+                                    <li><a href="javascript:void(0)" id="openPopupBtn" >Donate Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 mb-30">
+                        <div class="footer__widget">
+                            <div class="footer__title">
+                                <h2 class="footer__heading text-uppercase text-white">Quick Links</h2>
+                            </div>
+                            <div class="footer__menu">
+                                <ul>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a href="{% url 'about' %}">About</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"><a href="{% url 'blog' %}">Blogs</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'privacy' %}active{% endif %}"><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'tc' %}active{% endif %}"><a href="{% url 'tc' %}">Terms and Conditions</a></li>
+                                    <li class="dropdown {% if request.resolver_match.url_name == 'rc' %}active{% endif %}"><a href="{% url 'rc' %}">Refund and Cancellations</a></li>
+                                    <li><a href="javascript:void(0)" id="openPopupBtn" >Donation</a></li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mb-30">
+                        <form action="{% url 'subscribe_newsletter' %}" method="post" class="footer__newsletter">
+                            {% csrf_token %}
+                            <div class="footer__title">
+                                <h2 class="footer__heading text-uppercase text-white">Newsletter</h2>
+                            </div>
+                            <div class="footer__newsletter__formGroup mb-20">
+                                <input type="text" class="footer__newsletter__input" name="email" placeholder="Enter mail">
+                                <input class="footer__newsletter__button" type="submit" value="Subscribe">
+                            </div>
+                            <div class="footer__newsletter__formGroup">
+                                <input id="agree" type="checkbox" class="footer__newsletter__check form-check-input" checked disabled>
+                                <label class="footer__newsletter__label" for="agree">I agree that my submitted data is being
+                                    collected and stored.</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="footer__bottom">
+                <div class="row">
+                    <div class="col-12">
+                        <hr class="footer__line">
+                    </div>
+                    <div class="col mb-20">
+                        <div class="footer__copyright pt-20">
+                            <p class="footer__copyright__text mb-0">Copyright@example 2022 all right reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- CURSOR -->
+<div class="mouseCursor cursor-outer"></div>
+<div class="mouseCursor cursor-inner"></div>
+<!-- /CURSOR -->
+
+<div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+</div>
+
+<!-- Template Search -->
+<div id="template-search" class="template-search">
+    <button type="button" class="close">
+        <i class="fas fa-xmark"></i>
+    </button>
+    <form class="search-form">
+        <input type="search" value="" placeholder="Type your search" />
+        <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+
+<script src="{% static 'js/app.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nice-select@1.2.3/dist/css/nice-select.css"> -->
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<script>
+    document.getElementById('cancel').addEventListener('click', function() {
+        document.getElementById('popup').style.display = 'none';
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elements = document.querySelectorAll('#openPopupBtn');
+
+        elements.forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.getElementById('popup').style.display = 'flex';
+            });
+        });
+    });
+
+    document.getElementById('payButton').addEventListener('click', function() {
+        var name = document.getElementById('nameInput').value;
+        var amount = document.getElementById('amountInput').value;
+
+        if (name === '' || amount === '') {
+            alert('Please enter both name and amount.');
+            return;
+        }
+
+        var options = {
+            key: 'rzp_test_WfACWQdy6l83gT',
+            amount: amount * 100,
+            currency: 'INR',
+            name: 'Second Child Hood Trust',
+            description: 'Payment',
+            handler: function(response) {
+                console.log(response);
+                var csrfToken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "{% url 'store-payment-data' %}");
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log(xhr.success);
+                    } else {
+                        console.log('Error: ' + xhr.success);
+                    }
+                };
+                xhr.onerror = function() {
+                    console.log('Network Error');
+                };
+                var data = JSON.stringify({
+                    name: name,
+                    amount: amount,
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    csrfmiddlewaretoken:csrfToken
+                });
+                xhr.send(data);
+            }
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.open();
+    });
+</script>

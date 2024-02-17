@@ -1,0 +1,120 @@
+{% extends 'admin/layout.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="row">
+            <div class="col-md-8">
+                <h4><strong>Testimonials List</strong></h4>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'testimonials_create' %}" class="btn btn-success btn-sm pull-right">Add New Testimonial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class='alert alert-success' role='alert'>
+                <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>
+                {{ message }}
+                <span class='sr-only'>Success:</span>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class='alert alert-danger' role='alert'>
+                <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>
+                {{ message }}
+                <span class='sr-only'>Error:</span>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Designation</th>
+                            <th>Organization</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for testimonial in testimonials %}
+                        <tr>
+                            <td>{{ testimonial.id }}</td>
+                            <td>{{ testimonial.fullname }}</td>
+                            <td>{{ testimonial.designation }}</td>
+                            <td>{{ testimonial.organization }}</td>
+                            <td>{{ testimonial.description }}</td>
+                            <td>
+                                {% with image_url='/assets/images/testimonial/'|add:testimonial.image %}
+                                <img class="" src="{% static image_url %}" alt="Second Childhood Trust" style="height: 60px;">
+                                {% endwith %}                            </td>
+                            <td>
+                                <a href="{% url 'testimonials_edit' testimonial.id %}">
+                                    <button type="button" class="btn btn-box-tool text-green" title="Edit">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                </a>
+                                <form method="POST" onclick="return confirm('Are you sure to delete this item?')"
+                                    action="{% url 'testimonials_delete' testimonial.id %}">
+                                    {% csrf_token %}
+                                    <a href="{% url 'testimonials_delete' testimonial.id %}">
+                                        <button type="button" class="btn btn-box-tool text-red" title="Delete">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </a>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if testimonials.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ testimonials.previous_page_number }}">previous</a>
+                        {% endif %}
+                
+                        <span class="current">
+                            Page {{ testimonials.number }} of {{ testimonials.paginator.num_pages }}.
+                        </span>
+                
+                        {% if blogs.has_next %}
+                            <a href="?page={{ testimonials.next_page_number }}">next</a>
+                            <a href="?page={{ testimonials.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>            
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+
+
+{% endblock %}

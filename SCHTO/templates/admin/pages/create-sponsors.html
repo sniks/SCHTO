@@ -1,0 +1,74 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="row">
+            <div class="col-md-8">
+                <h4><strong>Add New Sponsor</strong></h4>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'sponsors' %}" class="btn btn-success btn-sm pull-right">See All Sponsor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+                <form method="post" enctype="multipart/form-data" action="{% if row %}{% url 'sponsors_create_with_id' id=row %}{% else %}{% url 'sponsors_create' %}{% endif %}">
+
+                    {% csrf_token %}
+                    <div class="box-body">
+                        <!-- show errors/messages here  -->
+                        {% if messages %}
+                            <div class='alert alert-info' role='alert'>
+                                <span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span>
+                                {{ messages }}
+                                <span class='sr-only'>Error:</span>
+                            </div>
+                        {% endif %}
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    {% for error in form.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <hr>
+                        <!-- /errors -->
+
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Upload Image</label>
+                                        <input type="file" name="image" id="exampleInputFile">
+                                        <p class="help-block">Image should be in square (160X160)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+
+
+{% endblock %}
