@@ -28,7 +28,7 @@ def sendmail(request):
     if request.method == 'POST':
         data = request.POST
         body = ', '.join([f"{k}='{v}'" for k, v in data.items()])
-        
+
         # Send email
         subject = 'Feedback Form Submission'
         sender_email = 'info@secondchildhoodtrust.org'
@@ -121,10 +121,10 @@ def blog_show_create(request, id=None):
         image = request.FILES.get('image')
 
         # Process image
-        imagename = f'{timezone.now().timestamp()}_{image.name}'
 
         # Use MEDIA_ROOT for file storage
         if 'image' in request.FILES:
+            imagename = f'{timezone.now().timestamp()}_{image.name}'
             uploaded_file = request.FILES['image']
             fs = FileSystemStorage(location=settings.MEDIA_ROOT+ '/blog')
             image_path = fs.save(imagename, uploaded_file)
@@ -151,6 +151,7 @@ def blog_show_create(request, id=None):
 
     # If it's not a POST request, handle GET request
     return render(request, 'admin/pages/create-blog.html', {'id': id})
+
 
 
 def blog_show_edit(request, id):

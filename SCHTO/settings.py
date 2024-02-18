@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-8f$=yr03yq5l67)=gfgr_&-=a!@32%b^+=vvt1+_1u3jbptl$y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.66.14.191']
 
 
 # Application definition
@@ -118,12 +118,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'schto/static'),
-    # Add more directories if needed
-]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'schto/static/assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'schto/static/')
 MEDIA_URL = '/images/'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
