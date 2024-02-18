@@ -374,7 +374,7 @@
                     );
                 } else {
                     $.ajax({
-                        url: "",
+                        url: '../sendmail/',
                         type: "POST",
                         data: innerContactForm.serialize(),
                         beforeSend: function() {

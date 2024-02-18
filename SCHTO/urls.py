@@ -28,6 +28,7 @@ urlpatterns = [
     path('privacy/', views.privacy, name='privacy'),
     path('t&c/', views.tc, name='tc'),
     path('r&c/', views.rc, name='rc'),
+    path('sendmail/', views.sendmail, name='sendmail'),
     path('store-payment-data', views.payment_store, name='store-payment-data'),
     path('subscribe-newsletter/', views.subscribe_newsletter, name='subscribe_newsletter'),
     path('login/', auth_views.LoginView.as_view(), name='login'),

@@ -32,15 +32,17 @@ def sendmail(request):
         # Send email
         subject = 'Feedback Form Submission'
         sender_email = 'info@secondchildhoodtrust.org'
-        recipient_email = 'info@secondchildhoodtrust.org'
+        recipient_email = 'nihalsharma172@gmail.com'
         message = f"{body}\n"
+
         try:
-            send_mail(subject, message, sender_email, [recipient_email])
+            send_mail(subject, message, sender_email, [recipient_email],fail_silently=False)
             return HttpResponse('success')
         except Exception as e:
             print(e)
             return HttpResponseServerError('failed')
 
+    return HttpResponse('Method Not Allowed', status=405)
 def about(request):
     boards = Board.objects.filter(designation='volunteer').order_by('-value')
     return render(request, 'about.html', {'boards': boards})
